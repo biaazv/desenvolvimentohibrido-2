@@ -1,11 +1,14 @@
 import { useState } from "react";
 import "./App.css";
 
+
 function App() {
   const [pokemon, setPokemon] = useState(null);
 
   async function buscarPokemon() {
-    const resposta = await fetch("https://pokeapi.co/api/v2/pokemon/pikachu");
+    const id = Math.floor(Math.random() *  1025) + 1;
+    const resposta = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
+    
     const dados = await resposta.json();
     setPokemon(dados);
   }
